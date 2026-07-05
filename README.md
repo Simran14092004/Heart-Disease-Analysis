@@ -78,6 +78,10 @@ I imported the dataset into MySQL and performed the following SQL steps:
 
 The cleaned dataset was then used to create Tableau visualizations for different aspects of heart disease analysis.
 
+You can view the sheets, dashboards, and story on Tableau Public here:
+
+- Tableau Public: https://public.tableau.com/views/HeartDiseaseWorkBook/Story1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+
 The visualizations include:
 
 - Heart Disease Distribution

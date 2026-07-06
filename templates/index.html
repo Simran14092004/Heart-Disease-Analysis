@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Disease Analysis | Tableau & Flask Dashboard</title>
+  <meta name="description" content="Comprehensive heart disease analytics web application featuring interactive Tableau dashboards, visualizations, and data-driven insights using MySQL, Tableau Public, and Flask." />
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+  <div class="container">
+    <a class="navbar-brand" href="#home">
+      <span class="brand-icon"><i class="bi bi-heart-pulse-fill"></i></span>
+      <span class="brand-text">HeartAnalytics</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#visualizations">Visualizations</a></li>
+        <li class="nav-item"><a class="nav-link" href="#dashboards">Dashboards</a></li>
+        <li class="nav-item"><a class="nav-link" href="#story">Story</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero-section">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="container hero-container">
+    <div class="row align-items-center min-vh-100">
+
+      <!-- Left Content -->
+      <div class="col-lg-6 hero-content" data-aos="fade-right">
+        <div class="hero-badge mb-3">
+          <i class="bi bi-heart-pulse-fill me-2"></i>Healthcare Analytics
+        </div>
+        <h1 class="hero-title">
+          Heart Disease Analysis
+          <span class="highlight-text">Using Tableau &amp; Flask</span>
+        </h1>
+        <p class="hero-desc">
+          An end-to-end data analytics platform that explores cardiovascular risk factors through
+          interactive Tableau dashboards, powered by MySQL data cleaning and Flask web integration.
+          Uncover patterns, identify trends, and gain evidence-based health insights.
+        </p>
+        <div class="hero-stats d-flex gap-4 mb-4">
+          <div class="stat-item">
+            <span class="stat-num">319K+</span>
+            <span class="stat-label">Records</span>
+          </div>
+          <div class="divider-v"></div>
+          <div class="stat-item">
+            <span class="stat-num">14</span>
+            <span class="stat-label">Health Factors</span>
+          </div>
+          <div class="divider-v"></div>
+          <div class="stat-item">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Visualizations</span>
+          </div>
+        </div>
+        <div class="hero-buttons d-flex gap-3 flex-wrap">
+          <a href="#dashboards" class="btn btn-hero-primary" id="explore-dashboard-btn">
+            <i class="bi bi-grid-3x3-gap-fill me-2"></i>Explore Dashboard
+          </a>
+          <a href="#story" class="btn btn-hero-secondary" id="view-story-btn">
+            <i class="bi bi-book-fill me-2"></i>View Story
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Illustration -->
+      <div class="col-lg-6 hero-visual d-none d-lg-flex" data-aos="fade-left">
+        <div class="hero-illustration">
+          <div class="illustration-card main-card">
+            <div class="card-header-strip"></div>
+            <div class="card-inner">
+              <div class="pulse-ring">
+                <i class="bi bi-heart-pulse-fill heart-icon"></i>
+              </div>
+              <div class="chart-bars">
+                <div class="bar b1"></div>
+                <div class="bar b2"></div>
+                <div class="bar b3"></div>
+                <div class="bar b4"></div>
+                <div class="bar b5"></div>
+                <div class="bar b6"></div>
+              </div>
+              <div class="metric-pills">
+                <span class="pill pill-blue"><i class="bi bi-graph-up-arrow"></i> Risk Analysis</span>
+                <span class="pill pill-green"><i class="bi bi-check-circle-fill"></i> 94.2% Accuracy</span>
+              </div>
+            </div>
+          </div>
+          <!-- Floating mini cards -->
+          <div class="float-card fc-1">
+            <i class="bi bi-people-fill"></i>
+            <span>Demographics</span>
+          </div>
+          <div class="float-card fc-2">
+            <i class="bi bi-lungs-fill"></i>
+            <span>Lifestyle</span>
+          </div>
+          <div class="float-card fc-3">
+            <i class="bi bi-clipboard2-pulse-fill"></i>
+            <span>Insights</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <a href="#about" class="scroll-indicator" id="scroll-down-btn">
+    <i class="bi bi-chevron-down"></i>
+  </a>
+</section>
+
+<!-- About -->
+<section id="about" class="about-section section-spacing">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">About the Project</span>
+      <h2 class="section-title">What This Project Is About</h2>
+      <p class="section-sub">A comprehensive data analytics journey from raw data to insightful dashboards</p>
+    </div>
+
+    <div class="row align-items-center g-5">
+
+      <!-- Left: Description -->
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="about-content">
+          <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="about-icon">
+              <i class="bi bi-bullseye"></i>
+            </div>
+            <div>
+              <h4>Objective</h4>
+              <p>To study heart disease-related data and identify key risk patterns across gender, age, lifestyle, and
+                 health conditions — then present findings through clean, interactive Tableau dashboards.</p>
+            </div>
+          </div>
+
+          <div class="about-item" data-aos="fade-up" data-aos-delay="150">
+            <div class="about-icon">
+              <i class="bi bi-database-fill"></i>
+            </div>
+            <div>
+              <h4>Dataset</h4>
+              <p>The CDC BRFSS 2020 dataset with 319,000+ survey responses covering 14 health indicators
+                 including BMI, smoking, alcohol, physical activity, diabetes, stroke, and more.</p>
+            </div>
+          </div>
+
+          <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-icon">
+              <i class="bi bi-server"></i>
+            </div>
+            <div>
+              <h4>MySQL Data Cleaning</h4>
+              <p>Raw data was imported into MySQL, duplicate records removed with DISTINCT,
+                 filtered using WHERE, aggregated with GROUP BY, and organized into analytical views.</p>
+            </div>
+          </div>
+
+          <div class="about-item" data-aos="fade-up" data-aos-delay="250">
+            <div class="about-icon">
+              <i class="bi bi-bar-chart-line-fill"></i>
+            </div>
+            <div>
+              <h4>Tableau Visualizations</h4>
+              <p>The cleaned dataset powers 10 interactive worksheets, 3 comprehensive dashboards,
+                 and 1 guided story on Tableau Public for clear, compelling storytelling.</p>
+            </div>
+          </div>
+
+          <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="about-icon">
+              <i class="bi bi-code-slash"></i>
+            </div>
+            <div>
+              <h4>Flask Web Integration</h4>
+              <p>A Python Flask backend serves this responsive web interface, embedding live
+                 Tableau Public visualizations for a seamless, interactive analytics experience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Visual panel -->
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="about-visual-panel">
+          <div class="tech-stack-grid">
+            <div class="tech-card" id="tech-mysql">
+              <div class="tech-logo">
+                <i class="bi bi-server"></i>
+              </div>
+              <div class="tech-name">MySQL</div>
+              <div class="tech-role">Data Cleaning</div>
+            </div>
+            <div class="tech-card" id="tech-tableau">
+              <div class="tech-logo">
+                <i class="bi bi-bar-chart-line-fill"></i>
+              </div>
+              <div class="tech-name">Tableau</div>
+              <div class="tech-role">Visualization</div>
+            </div>
+            <div class="tech-card" id="tech-flask">
+              <div class="tech-logo">
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <div class="tech-name">Flask</div>
+              <div class="tech-role">Web Backend</div>
+            </div>
+            <div class="tech-card" id="tech-python">
+              <div class="tech-logo">
+                <i class="bi bi-filetype-py"></i>
+              </div>
+              <div class="tech-name">Python</div>
+              <div class="tech-role">Analytics</div>
+            </div>
+            <div class="tech-card" id="tech-html">
+              <div class="tech-logo">
+                <i class="bi bi-filetype-html"></i>
+              </div>
+              <div class="tech-name">HTML/CSS</div>
+              <div class="tech-role">Frontend</div>
+            </div>
+            <div class="tech-card" id="tech-git">
+              <div class="tech-logo">
+                <i class="bi bi-git"></i>
+              </div>
+              <div class="tech-name">GitHub</div>
+              <div class="tech-role">Version Control</div>
+            </div>
+          </div>
+          <div class="workflow-timeline mt-4">
+            <div class="wf-step"><span class="wf-dot"></span><span>Raw Dataset</span></div>
+            <div class="wf-arrow"><i class="bi bi-arrow-right"></i></div>
+            <div class="wf-step"><span class="wf-dot"></span><span>MySQL Clean</span></div>
+            <div class="wf-arrow"><i class="bi bi-arrow-right"></i></div>
+            <div class="wf-step"><span class="wf-dot"></span><span>Tableau Viz</span></div>
+            <div class="wf-arrow"><i class="bi bi-arrow-right"></i></div>
+            <div class="wf-step active"><span class="wf-dot"></span><span>Flask Web</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Visualizations -->
+<section id="visualizations" class="viz-section section-spacing">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Tableau Worksheets</span>
+      <h2 class="section-title">Interactive Visualizations</h2>
+      <p class="section-sub">
+        Explore individual visualizations created in Tableau to understand various health indicators,
+        lifestyle factors, and disease relationships.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      {% for viz in visualizations %}
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}">
+        <div class="viz-card" id="{{ viz.id }}-card">
+          <div class="viz-card-header">
+            <h5 class="viz-card-title">
+              <i class="bi bi-bar-chart-fill me-2"></i>{{ viz.title }}
+            </h5>
+          </div>
+          <div class="viz-card-body">
+            <div class="tableau-embed-wrapper">
+              <div class="embed-loading" id="{{ viz.id }}-loading">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading…</span>
+                </div>
+                <p>Loading visualization…</p>
+              </div>
+              <tableau-viz
+                id="{{ viz.id }}"
+                src="{{ tableau_base }}/{{ viz.view }}{{ tableau_params }}"
+                width="100%"
+                height="400"
+                hide-tabs
+                toolbar="no">
+              </tableau-viz>
+            </div>
+            <p class="viz-description">{{ viz.description }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Dashboards -->
+<section id="dashboards" class="dashboards-section section-spacing">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Tableau Dashboards</span>
+      <h2 class="section-title">Interactive Dashboards</h2>
+      <p class="section-sub">
+        Three comprehensive dashboards that bring together multiple visualizations into
+        cohesive analytical narratives.
+      </p>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="row g-4 mb-5" id="dashboard-cards-row">
+      {% for db in dashboards %}
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+        <div class="dashboard-card" id="{{ db.id }}-card"
+             onclick="openDashboard('{{ db.id }}', '{{ db.view }}', '{{ db.title }}')"
+             role="button" tabindex="0"
+             onkeypress="if(event.key==='Enter') openDashboard('{{ db.id }}', '{{ db.view }}', '{{ db.title }}')">
+          <div class="db-card-accent" style="background: {{ db.color }};"></div>
+          <div class="db-icon-wrap" style="background: {{ db.color }}22; color: {{ db.color }};">
+            <i class="bi {{ db.icon }}"></i>
+          </div>
+          <h4 class="db-card-title">{{ db.title }}</h4>
+          <p class="db-card-desc">{{ db.description }}</p>
+          <div class="db-preview-thumb">
+            <div class="thumb-inner">
+              <i class="bi bi-display"></i>
+              <span>Dashboard Preview</span>
+            </div>
+          </div>
+          <button class="btn btn-open-dashboard" style="background: {{ db.color }};">
+            <i class="bi bi-fullscreen me-2"></i>Open Dashboard
+          </button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Embedded Dashboard Viewer -->
+    <div class="dashboard-viewer-wrapper" id="dashboard-viewer-wrapper" style="display:none;" data-aos="fade-up">
+      <div class="viewer-header">
+        <div class="viewer-title">
+          <i class="bi bi-grid-3x3-gap-fill me-2"></i>
+          <span id="viewer-title-text">Dashboard</span>
+        </div>
+        <button class="viewer-close-btn" onclick="closeDashboard()" id="close-dashboard-btn">
+          <i class="bi bi-x-lg"></i> Close
+        </button>
+      </div>
+      <div class="viewer-embed-container">
+        <div class="embed-loading" id="dashboard-loading">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p>Loading dashboard…</p>
+        </div>
+        <iframe id="dashboard-iframe"
+                src=""
+                width="100%"
+                height="700"
+                frameborder="0"
+                allowfullscreen
+                onload="hideDashboardLoader()">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Story -->
+<section id="story" class="story-section section-spacing">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Tableau Story</span>
+      <h2 class="section-title">Interactive Story</h2>
+      <p class="section-sub">
+        Follow the complete analysis journey through an interactive Tableau Story that combines
+        all dashboards into a single, guided presentation.
+      </p>
+    </div>
+
+    <div class="story-container" data-aos="fade-up">
+      <div class="story-preview-panel" id="story-preview-panel">
+        <div class="story-preview-content">
+          <div class="story-icon-wrap">
+            <i class="bi bi-book-half"></i>
+          </div>
+          <h3>Complete Analysis Journey</h3>
+          <p>This Tableau Story walks you through the entire analysis — from raw data exploration
+             and demographic breakdowns to lifestyle factors and comorbidity patterns. Each story
+             point reveals deeper insights into what drives heart disease.</p>
+          <div class="story-points-list">
+            <div class="sp-item"><i class="bi bi-1-circle-fill"></i><span>Overview & Demographics</span></div>
+            <div class="sp-item"><i class="bi bi-2-circle-fill"></i><span>Lifestyle Risk Factors</span></div>
+            <div class="sp-item"><i class="bi bi-3-circle-fill"></i><span>Disease Correlations</span></div>
+          </div>
+          <button class="btn btn-launch-story" id="launch-story-btn" onclick="launchStory()">
+            <i class="bi bi-play-circle-fill me-2"></i>Launch Tableau Story
+          </button>
+        </div>
+      </div>
+
+      <!-- Story Embed Panel -->
+      <div class="story-embed-panel" id="story-embed-panel" style="display:none;">
+        <div class="viewer-header">
+          <div class="viewer-title">
+            <i class="bi bi-book-fill me-2"></i>Heart Disease Analysis — Interactive Story
+          </div>
+          <button class="viewer-close-btn" onclick="closeStory()" id="close-story-btn">
+            <i class="bi bi-x-lg"></i> Close
+          </button>
+        </div>
+        <div class="embed-loading" id="story-loading">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p>Loading story…</p>
+        </div>
+        <iframe id="story-iframe"
+                src=""
+                width="100%"
+                height="750"
+                frameborder="0"
+                allowfullscreen
+                onload="hideStoryLoader()">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact-section section-spacing">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Get in Touch</span>
+      <h2 class="section-title">Contact &amp; Project Info</h2>
+      <p class="section-sub">Details about the team and project resources</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- Project Info Card -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="contact-card" id="project-info-card">
+          <div class="contact-card-icon">
+            <i class="bi bi-folder2-open-fill"></i>
+          </div>
+          <h4>Project Details</h4>
+          <ul class="contact-list">
+            <li>
+              <span class="cl-label"><i class="bi bi-tag-fill"></i> Project</span>
+              <span class="cl-value">Heart Disease Analysis</span>
+            </li>
+            <li>
+              <span class="cl-label"><i class="bi bi-tools"></i> Stack</span>
+              <span class="cl-value">MySQL · Tableau · Flask</span>
+            </li>
+            <li>
+              <span class="cl-label"><i class="bi bi-database-fill"></i> Dataset</span>
+              <span class="cl-value">CDC BRFSS 2020</span>
+            </li>
+            <li>
+              <span class="cl-label"><i class="bi bi-calendar-fill"></i> Year</span>
+              <span class="cl-value">2025–2026</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Team Card -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="contact-card" id="team-card">
+          <div class="contact-card-icon">
+            <i class="bi bi-people-fill"></i>
+          </div>
+          <h4>Team</h4>
+          <ul class="contact-list">
+            <li>
+              <span class="cl-label"><i class="bi bi-person-badge-fill"></i> Team Leader</span>
+              <span class="cl-value">Simran Singh</span>
+            </li>
+            <li>
+              <span class="cl-label"><i class="bi bi-people-fill"></i> Members</span>
+              <span class="cl-value">Akash Srivastava, Arpit Kumar Sharma</span>
+            </li>
+            <li>
+              <span class="cl-label"><i class="bi bi-building-fill"></i> College</span>
+              <span class="cl-value">Your College Name</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Links Card -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="contact-card" id="links-card">
+          <div class="contact-card-icon">
+            <i class="bi bi-link-45deg"></i>
+          </div>
+          <h4>Resources</h4>
+          <ul class="contact-list">
+            <li>
+              <span class="cl-label"><i class="bi bi-github"></i> GitHub</span>
+              <a class="cl-value cl-link"
+                 href="https://github.com/Simran14092004/Heart-Disease-Analysis"
+                 target="_blank" rel="noopener">View Repository</a>
+            </li>
+            <li>
+              <span class="cl-label"><i class="bi bi-bar-chart-fill"></i> Tableau</span>
+              <a class="cl-value cl-link"
+                 href="https://public.tableau.com/views/HeartDiseaseWorkBook/Story1"
+                 target="_blank" rel="noopener">View on Tableau Public</a>
+            </li>
+            <li>
+              <span class="cl-label"><i class="bi bi-envelope-fill"></i> Email</span>
+              <a class="cl-value cl-link"
+                 href="mailto:simranss41010@gmail.com">simranss41010@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <i class="bi bi-heart-pulse-fill me-2"></i>
+        Heart Disease Analysis Project
+      </div>
+      <p class="footer-copy">© 2026 Heart Disease Analysis Project</p>
+      <p class="footer-stack">
+        Developed using <span>Flask</span> • <span>MySQL</span> • <span>Tableau Public</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

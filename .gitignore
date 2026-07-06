@@ -1,0 +1,76 @@
+# ─────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ─────────────────────────────────────────────
+# Environment & Secrets
+# ─────────────────────────────────────────────
+.env
+.env.*
+*.env
+secrets.json
+config.json
+
+# ─────────────────────────────────────────────
+# Datasets (large / potentially sensitive data)
+# ─────────────────────────────────────────────
+dataset/
+*.csv
+*.xlsx
+*.xls
+*.json
+
+# ─────────────────────────────────────────────
+# Tableau workbooks (contain embedded data)
+# ─────────────────────────────────────────────
+tableau/
+*.twbx
+*.twb
+*.tde
+*.hyper
+
+# ─────────────────────────────────────────────
+# SQL files (DB credentials / schema internals)
+# ─────────────────────────────────────────────
+sql/
+
+# ─────────────────────────────────────────────
+# Deployment & Build logs
+# ─────────────────────────────────────────────
+*.log
+logs/
+*.out
+
+# ─────────────────────────────────────────────
+# OS & Editor junk
+# ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ─────────────────────────────────────────────
+# Jupyter Notebooks (optional — remove if needed)
+# ─────────────────────────────────────────────
+*.ipynb
+.ipynb_checkpoints/

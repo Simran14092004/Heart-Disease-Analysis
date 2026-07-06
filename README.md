@@ -1,5 +1,7 @@
 # Heart Disease Analysis using MySQL and Tableau
 
+🌐 **Live Demo:** [https://heart-disease-analysis-vha4.onrender.com](https://heart-disease-analysis-vha4.onrender.com)
+
 This project started as a coursework task, but it became much more than that for me. I wanted to understand how health and lifestyle factors relate to heart disease, and I also wanted to learn how data should be prepared before it is turned into a dashboard.
 
 When I first looked at the dataset, it seemed simple, but I quickly noticed that there were duplicate records. That was an important issue because using the raw data directly could affect the results. Instead of jumping straight into Tableau, I decided to bring the data into MySQL, clean it using SQL, and then use the cleaned data for visualization.
@@ -106,23 +108,23 @@ As the team leader, I also learned that choosing the right process at the beginn
 ```text
 Heart-Disease-Analysis/
 │
-├── dataset/
-│   ├── Heart_new2.csv
-│   └── Heart_dataset_clean.csv
+├── app.py                  ← Flask web application
+├── Procfile                ← Render start command
+├── render.yaml             ← Render deployment config
+├── requirements.txt        ← Python dependencies
 │
-├── sql/
-│   ├── 01_create_database.sql
-│   ├── 02_data_cleaning.sql
-│   ├── 03_create_view.sql
-│   └── 04_analysis_queries.sql
+├── templates/
+│   └── index.html          ← Main web page
 │
-├── tableau/
-│   ├── HeartDiseaseWorkBook.twbx
-│   └── mysql(tableau).twbx
+├── static/
+│   ├── css/style.css
+│   └── js/script.js
 │
 ├── README.md
 └── LICENSE
 ```
+
+> Note: Dataset files, SQL scripts, and Tableau workbooks are excluded from this repository.
 
 ## What I Learned
 
@@ -130,6 +132,10 @@ This project helped me understand the importance of data preparation in analytic
 
 It also showed me that SQL and Tableau work very well together when the goal is to turn raw data into useful insights.
 
-## Next Step
+## Deployment
 
-If you want, the next step can be to add screenshots of the Tableau dashboard inside this repository and also include a link to the published dashboard if it is uploaded to Tableau Public.
+The web application is deployed on **Render** and can be accessed live at:
+
+🔗 [https://heart-disease-analysis-vha4.onrender.com](https://heart-disease-analysis-vha4.onrender.com)
+
+The app is built with Flask and served using Gunicorn, embedding the Tableau Public dashboards for interactive exploration.
